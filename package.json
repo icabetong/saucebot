@@ -1,0 +1,16 @@
+{
+  "name": "saucepan-bot",
+  "version": "1.0.0",
+  "description": "Saucepan Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r esm index.js"
+  },
+  "author": "Isaiah Collins Abetong",
+  "license": "AGPL 3.0",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "esm": "^3.2.25"
+  }
+}
