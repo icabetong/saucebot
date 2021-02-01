@@ -1,0 +1,1 @@
+worker: node -r esm bot.js
