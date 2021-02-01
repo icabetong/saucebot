@@ -11,6 +11,8 @@
   "license": "AGPL 3.0",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "esm": "^3.2.25"
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "node-fetch": "^2.6.1"
   }
 }
