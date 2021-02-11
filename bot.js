@@ -31,7 +31,6 @@ client.on('guildMemberRemove', member => {
 client.on('message', message => {
 	if (message.author.bot) return;
 
-	
 	if (message.channel.type == "dm") {
 		let guildId = DEBUG ? data.guild.debug : data.guild.production;
 		let roleId = DEBUG ? data.role.debug : data.role.production;
@@ -53,6 +52,8 @@ client.on('message', message => {
 					} else {
 						message.author.send("Wrong answer! Try again later.");
 					}
+				} else {
+					message.author.reply("Command not recognized. You'll need to trigger a command in the server again.")
 				}
 			}).catch(error => {
 				console.error(error);
@@ -61,14 +62,14 @@ client.on('message', message => {
 		 
 	// Verification
 	if (message.content.startsWith("!verify")) {
+		let roleId = DEBUG ? data.role.debug : data.guild.production;
 
-		if (message.content !== "!verify") {
+		if (message.member.roles.cache.find(role => role.id === roleId)) {
+			message.reply("You are already verified!.")
+		} else if (message.content !== "!verify") {
 			message.reply("There should be no more text after verify.");
 		} else {
 			message.author.send(data.verification.question);
 		}
-	} else if (message.content.startsWith("!find")) {
-
-		
 	}
 })
