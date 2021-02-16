@@ -86,6 +86,12 @@ client.on('message', message => {
 				}
 			})
 	} else if (message.content.startsWith("!who-is-gay")) {
-		message.channel.send(`<@${process.env.GAY}> is gay`)
+		message.channel.send(`<@${process.env.usr_GAY}> is gay`)
+	} else if (message.content.startsWith("!call-abstract-master")) {
+		message.channel.send(`<@${process.env.usr_ABSTRACT}>, where's your art?`);
+	} else if (message.content.startsWith("!mah-nigga")) {
+		message.channel.send(`<@${process.env.usr_NIGGA}>, s'up?`);
+	} else if (message.content.startsWith("!hey-step-bro")) {
+		message.channel.send(`<@${process.env_usr_STEPBRO}>, ugh ugh ugh`);
 	}
 })
