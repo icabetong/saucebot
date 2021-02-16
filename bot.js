@@ -14,6 +14,8 @@ fetch(url)
 	.then(output => data = output)
 	.catch(err => data = err);
 
+let waitTimeForUser = 60000 * 2;
+
 client.login(TOKEN);
 
 client.on('ready', () => {
@@ -62,14 +64,26 @@ client.on('message', message => {
 		 
 	// Verification
 	if (message.content.startsWith("!verify")) {
-		let roleId = DEBUG ? data.role.debug : data.guild.production;
+		message.channel.messages.fetch({ limit: 2 })
+			.then(messages => {
+				const lastMessage = messages.last();
 
-		if (message.member.roles.cache.find(role => role.id === roleId)) {
-			message.reply("You are already verified!.")
-		} else if (message.content !== "!verify") {
-			message.reply("There should be no more text after verify.");
-		} else {
-			message.author.send(data.verification.question);
-		}
+				if (!lastMessage.author.bot &&
+					lastMessage.author.id === message.author.id &&
+					lastMessage.createdTimestamp + waitTimeForUser > message.createdTimestamp) {
+					message.reply("Please wait another 2 minutes for attempting to verify again.");
+					return;
+				}
+
+				let roleId = DEBUG ? data.role.debug : data.role.production;
+
+				if (message.member.roles.cache.find(role => role.id === roleId)) {
+					message.reply("You are already verified!.")
+				} else if (message.content !== "!verify") {
+					message.reply("There should be no more text after verify.");
+				} else {
+					message.author.send(data.verification.question);
+				}
+			})
 	}
 })
