@@ -92,6 +92,6 @@ client.on('message', message => {
 	} else if (message.content.startsWith("!mah-nigga")) {
 		message.channel.send(`<@${process.env.usr_NIGGA}>, s'up?`);
 	} else if (message.content.startsWith("!hey-step-bro")) {
-		message.channel.send(`<@${process.env_usr_STEPBRO}>, ugh ugh ugh`);
+		message.channel.send(`<@${process.env.usr_STEPBRO}>, ugh ugh ugh`);
 	}
 })
