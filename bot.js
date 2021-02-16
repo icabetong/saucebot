@@ -85,5 +85,7 @@ client.on('message', message => {
 					message.author.send(data.verification.question);
 				}
 			})
+	} else if (message.content.startsWith("!who-is-gay")) {
+		message.channel.send(`<@${process.env.GAY}> is gay`)
 	}
 })
