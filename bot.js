@@ -93,5 +93,7 @@ client.on('message', message => {
 		message.channel.send(`<@${process.env.usr_NIGGA}>, s'up?`);
 	} else if (message.content.startsWith("!hey-step-bro")) {
 		message.channel.send(`<@${process.env.usr_STEPBRO}>, ugh ugh ugh`);
-	}
+	} else if (message.content.startsWith("!tanginamo") {
+                message.reply("Wanna fight bitch?");
+        }
 })
